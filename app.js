@@ -8,7 +8,7 @@ var rest = require('connect-rest')
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var restRoutes = require('./routes/routes');
+// var restRoutes = require('./routes/routes');
 
 var app = express();
 

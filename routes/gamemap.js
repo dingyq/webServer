@@ -20,10 +20,9 @@ exports.getMap1 = function(req, res) {
 }
 
 exports.getMap = function(req, res, cb) {
-    var query_doc = {user: req.query.user, shareId: req.query.shareId};
-    // var query_doc = {user:"admin"};
-    // console.log(req);
-    console.log("query_doc.user is "+query_doc.user);
+    // var query_doc = {user: req.query.user, shareId: req.query.shareId};
+    var query_doc = {user:"admin"};
+    console.log(req.params.url);
     gamemap.find(query_doc, function (err, doc) {
         if(err) return cb({error:'Internal error.'});
         cb(null, doc.map(function (a) {
