@@ -88,6 +88,7 @@ exports.getWxShareBasicData = function (cb, url) {
             var obj = JSON.parse(chunk);
             var signRel = sign(obj.ticket, url);
             signRel.retcode = 0;
+            signRel.appId = "wxfba52509a14551ff";
             cb(signRel);  
         } else {
             cb({retcode:-1, retmsg:'fail'});  
