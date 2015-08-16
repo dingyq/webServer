@@ -59,7 +59,16 @@ var getJsApiTicket = function (token, cb) {
     var req = http.request(options, function (res) {  
         res.setEncoding('utf8');  
         res.on('data', function (chunk) {  
-            // console.log('BODY: ' + chunk); 
+            console.log('BODY: ' + chunk); 
+            var obj =JSON.parse(chunk);
+            // 存入DB，然后回调；
+            var conditions = { name: 'wxtoken' };
+            var newData = { $set: { ticket:obj.ticket}};
+            singletons.update(conditions, newData, {}, function(err, docs) {
+                console.log(JSON.stringify(docs)+","+err);
+            });
+
+
             cb({retcode:0, retmsg:'success'}, chunk);
         });  
     });  
@@ -109,10 +118,8 @@ exports.getWxShareBasicData = function (cb, url) {
         }
 
         if(tokenInvalid) {
-            console.log("adfasdfas1")
-            getJsApiTicket(actualRel.accesstoken, ticketCallBack);
+            ticketCallBack({retcode:0, retmsg:'success'}, JSON.stringify({ticket:actualRel.ticket}))
         } else {
-            console.log("adfasdfas")    
             getAccessToken(getJsApiTicket, ticketCallBack);
         }
 
