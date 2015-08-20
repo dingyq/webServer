@@ -9,8 +9,8 @@ var singletons = require('../models/singletons').singletons;
 **/
 var getAccessToken = function(cb, cb1) {
     var data = {  
-        appid: "wxfba52509a14551ff",  
-        secret: "30d59cda0cf6cccc1276ae3e3a85b1b7"
+        appid: "wx01af15f51f473394",  
+        secret: "07705c0736dd116d7dd7f3d7383a8a2a"
     };//这是需要提交的数据  
     var content = qs.stringify(data);  
     var options = {  
